@@ -6,11 +6,18 @@
 
 struct gfxRect {
 	int width, height, x, y;
-	int color;
+	uint32_t color;
 };
 
-bool gfx_init(uint16_t width, uint16_t height, void * fb, uint8_t mode);
-void gfx_raw_draw(int x, int y, uint8_t color);
+struct gfxBitmap {
+	int width, height;
+	uint8_t depth;
+	uint8_t transparent;
+	uint8_t * data;	
+};
+
+bool gfx_init(uint16_t width, uint16_t height, void * fb, uint8_t depth, uint8_t space);
+void gfx_raw_draw(int x, int y, uint32_t color);
 void gfx_rect_draw(struct gfxRect * rect);
 
 #endif

@@ -15,11 +15,11 @@ static void timer_handler(Registers * regs) {
 	}
 }
 
-void pit_reg_event(void (*func)(), size_t interval) {
+void pit_reg_event(void (*func)(), size_t interval, int offset) {
 	struct pit_event * tmp = &pit_events[pit_event_num];
 
 	tmp->func = func;
-	tmp->interval = interval;
+	tmp->interval = interval + offset;
 
 	pit_event_num++;
 }
